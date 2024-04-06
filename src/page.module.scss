@@ -1,0 +1,122 @@
+.dark{
+  --bg-color: #262626;
+  --font-color: #fff0e3;
+  --main-color: #262626;
+  --secondary-color: #fff0e3;
+  --highlight-color: #8d23ad;
+}
+
+.light{
+  --bg-color: #fff0e3;
+  --font-color: #262626;
+  --main-color: #fff0e3;
+  --secondary-color: #262626;
+  --highlight-color: #8d23ad;
+}
+
+.removeScrollBar{
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.upperDiv{
+  position: relative;
+
+  --transi-function: ease-out;
+  --transi-time: 1s;
+
+  color: var(--font-color);
+}
+
+.header{
+  position: sticky;
+  background-color: var(--bg-color);
+
+  top: 0;
+  left: 0;
+  height: 10vh;
+  width: 100vw;
+  box-shadow: color-mix(in srgb, var(--bg-color) 80%, var(--font-color) 10%) 0px 15px 15px;
+  display: grid;
+  grid-template-columns: 3em 1fr max-content 1fr 3em;
+
+  z-index: 100;
+
+  transition: background-color var(--transi-time) var(--transi-function), color var(--transi-time) var(--transi-function);
+
+  align-items: center;
+}
+
+.main{
+  width: 100vw;
+
+  background-color: var(--bg-color);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  transition: background-color var(--transi-time) var(--transi-function), color var(--transi-time) var(--transi-function);
+}
+
+.page{
+  height: 90vh;
+  width: 100vw;
+
+  overflow-y: hidden;
+}
+
+.scrollPoints{
+  position: fixed;
+  height: 25vh;
+  width: 5vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  top: 37.5vh;
+  left: 1vw;
+
+  li{
+    list-style: none;
+
+    button{
+      /*Remove default button style */
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+
+
+      width: .5vw;
+      height: .5vw;
+      border-radius: 50%;
+
+      background-color: var(--font-color);
+      opacity: .8;
+
+      &:hover{
+        background-color: var(--highlight-color);
+      }
+
+      &.active{
+        background-color: var(--highlight-color);
+        opacity: 1;
+
+        transform: scale(1.5);
+        transition: transform .5s var(--transi-function);
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+[
+    {
+        "name": "realiser",
+        "title": "Réaliser",
+        "description": "Implémenter, élaborer des applications simples, appliquer les principes d'accessibilité et d'ergonomie, faire évoluer une application existante",
+        "images": "",
+        "url": [
+            "projets/alizon",
+            "projets/loppu"
+        ]
+    },
+    {
+        "name": "optimiser",
+        "title": "Optimiser",
+        "description": "Comprendre les enjeux et moyens de sécurisation des données et du code, profiler, analyser le comportement d'un code existant",
+        "images": "",
+        "url": [
+            "projets/loppu",
+            "projets/pokedex"
+        ]
+    },
+    {
+        "name": "administrer",
+        "title": "Administrer",
+        "description": "Configurer un poste de travail dans un réseau d'entreprise, concevoir et développer des applications communicantes",
+        "images": "",
+        "url": [
+            "experiences/rnpvision",
+            "projets/loppu"
+        ]
+    }
+]

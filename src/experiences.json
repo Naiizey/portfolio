@@ -1,0 +1,36 @@
+[
+    {
+        "name": "stPierre",
+        "title": "Lycée Saint-Pierre Saint-Brieuc, Baccalauréat général 2021",
+        "description": "J'ai effectué mon Baccalauréat au lycée Saint-Pierre à Saint-Brieuc, dans les côtes d'armor. Première année des BAC avec spécialités, je me suis naturellement dirigé vers les mathématiques, la NSI ( numériques et sciences informatiques ) et physique chimie. J'ai également suivi une option Latin jusqu'en fin de 1ère et l'option europe tout le long de mon lycée qui m'a permis d'obtenir une mention européene et le diplôme de Cambridge niveau B2 avec certaines parties C1",
+        "url": "https://www.st-pierre-st-brieuc.bzh/",
+        "images": [
+            "stPierreB"
+        ]
+    },
+    {
+        "name": "iutLannion",
+        "title": "IUT Lannion, B.U.T informatique Parcours A 2021-2024",
+        "description": "J'ai effectué mes trois années d'études supérieures à l'IUT de Lannion, dans les côtes d'armor. Également première année de réforme et apparition du BUT, bachelor universitaire et technologique. Passage donc d'un diplôme en deux ans à trois ans, avec possibilité d'alternance à partir de la deuxième année. J'ai pu effectué un stage en fin de deuxième année durant 8 semaines avec une université de New York et une alternance en troisième année toujours en cours de début septembre à fin août. ",
+        "url": "https://iut-lannion.univ-rennes.fr/",
+        "images": [
+            "iutLannionB"
+        ]
+    },
+    {
+        "name": "stageIut",
+        "title": "Stage BUT avec College of Staten Island New York",
+        "description": "Lors de ma deuxième année de BUT et pendant 8 semaines, j'ai pu réaliser un stage en lien avec un travail de recherche du College of Staten Island, une université américaine à New York. Ce travail avait pour sujet l'automatisation de résumés et en déterminer la pensée liée au message, afin de déterminé de sa positivé ou négativité. Afin de réaliser les ébauches de ce travail, j'ai comparé l'efficacité de différents modèles par d'autres algorithmes mais également par ma pensée ainsi que celle de la chercheuse qui mène le travail",
+        "images": [
+            "stageIutB"
+        ]
+    },
+    {
+        "name": "alternanceIut",
+        "title": "Alternance BUT chez RnPVision",
+        "description": "Depuis début septembre 2023 et jusque fin août 2024, j'ai la chance d'effectuer une alternance chez RnPVision, une jeune entreprise créant un SIG, système d'information géographique à destination des communes et intercommunalités. Ce SIG est une application web ce qui permet une disponibilité sur une large gamme de matériel. Le but principal de l'application est de permettre aux utilisateurs de retrouver l'ensemble de leurs besoins au sein d'une même application, réduire au maximum la redodance de saisie de la donnée et donc permettre un gain de temps et d'efficacité. Cet alternance me permet également de comprendre certains enjeux de notre société et certaines notions géomatiques, le traitement des données etc...",
+        "images": [
+            "alternanceIutB"
+        ]
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "name": "react",
+        "title": "React",
+        "description": "Framework front-end javascript maintenu par Meta et la communauté. Il est particulièrement utilisé pour les applications monopage",
+        "images": "",
+        "url": "https://react.dev/"
+    },
+    {
+        "name": "angular",
+        "title": "Angular",
+        "description": "Framework front-end typescript maintenu par Google et la communauté. Il est particulièrement utilisé pour les applications monopage",
+        "images": "",
+        "url": "https://angular.io/"
+    },
+    {
+        "name": "github",
+        "title": "GitHub",
+        "description": "Platforme en ligne permettant le stockage de données par l'utilisation de Git, un système de versionnement de dossiers et fichiers.",
+        "images": "",
+        "url": "https://github.com/"
+    },
+    {
+        "name": "n8n",
+        "title": "n8n",
+        "description": "Application web open-source et self-hostable permettant de créer de puissants worflow automatisé à partir de noeuds.",
+        "images": "",
+        "url": "https://n8n.io/"
+    },
+    {
+        "name": "mapserver",
+        "title": "Mapserver",
+        "description": "Environnement de développement permettant la création de cartes contenant des données géoréférencées",
+        "images": "",
+        "url": "https://mapserver.org/"
+    },
+    {
+        "name": "openlayers",
+        "title": "OpenLayers",
+        "description": "Bilbiothèque javascript permettant l'affichage de couches géoréférencées dans une application web. Elle possède un lien direct avec mapserver",
+        "images": "",
+        "url": "https://openlayers.org/"
+    },
+    {
+        "name": "postgresql",
+        "title": "PostgreSQL",
+        "description": "Système de gestion de base de données relationnelle et objet open-source. Apprécié pour sa possibilité d'ajout de fonctionnalité supplémentaires",
+        "images": "",
+        "url": "https://www.postgresql.org/"
+    },
+    {
+        "name": "postgis",
+        "title": "Postgis",
+        "description": "Extension PostgreSQL permettant l'utilisation et la gestion de données géographiques utilisées dans les applications telles que mapserver",
+        "images": "",
+        "url" : "https://postgis.net/"
+    }
+]

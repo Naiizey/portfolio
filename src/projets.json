@@ -1,0 +1,49 @@
+[
+    {
+        "name": "pokedex",
+        "images": [
+            "pokedexFlat",
+            "pokedexShiny",
+            "pokedexSearch",
+            "pokedexCard"
+        ],
+        "title": "React Pokédex",
+        "description": "Ce projet est un Pokédex fait en React, les données sont récupérés de la PokeAPI et formalisé par la suite dans un JSon, il serait totalement possible de mettre les données du JSon dans une base de données étant donné que toutes les entrées du JSon sont formalisées. Ce projet est lié à un projet de TP (travail pratique) d'IUT que j'ai poussé plus loin par envie.",
+        "url": "https://github.com/Naiizey/cra-pokemon"
+    },
+    {
+        "name": "dsBot",
+        "images": [
+            "dsBotCommands",
+            "dsBotSetServStreamer",
+            "dsBotTwitchNotif",
+            "dsBotProfile"
+        ],
+        "title": "Discord bot",
+        "description": "Développement ( en cours ) d'un bot discord capable actuellement d'effectuer des tâches d'administration, comme bannir ou exclure des personnes. Mais aussi de notifier les lives de streamers renseignés auparavant à l'aide d'une commande. Le bot est lié à une base de donnée qui permet de gérer plusieurs notifications pour un même serveur dans un salon texte précis. Un mini-jeu nommé \"Guess the word\" devrait voir le jour, le principe, trouver le seul mot présent dans une langue."
+    },
+    {
+        "name": "loppu",
+        "images": [
+            "loppuHome",
+            "loppuStory",
+            "loppuDice",
+            "loppuCharaCard"
+        ],
+        "title": "Loppu, an interactive web-story",
+        "description": "Loppu est un projet de \"livre dont vous êtes le héro\" développé en 3,5 jours en groupe de 5. Le but était de réaliser une architecture complète de site web fonctionnelle. Le projet tourne complètement sous docker, avec une base de données postgres, une API express et un front React. Notre groupe a fait le maximum pour que l'intégration d'une nouvelle histoire soit ateignable dans des délais raisonnables.",
+        "url": "https://github.com/Naiizey/loppu"
+    },
+    {
+        "name": "alizon",
+        "images": [
+            "alizonHome",
+            "alizonCatalogue",
+            "alizonPanier",
+            "alizonParcoursAchat"
+        ],
+        "title": "Alizon, marketplace",
+        "description": "Alizon est un projet sur deux semestres réalisé en groupe de 7. Le but de ce projet était de réaliser de A à Z une plateforme marketplace. Le travail réalisé comporte un parcours complet d'achat, de l'ajout dans un panier de produits à la visualisation de la livraison (simulée) en passant par la connexion, ou la confirmation de panier.",
+        "url": "https://github.com/Naiizey/SAE3_LBBDS"
+    }
+]

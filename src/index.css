@@ -1,10 +1,76 @@
+@font-face{
+  font-family: 'league_spartan_semiBold';
+  src: url(../fonts/LeagueSpartan/static/woff2/LeagueSpartan-SemiBold.woff2) format('woff2'),
+       url(../fonts/LeagueSpartan/static/woff/LeagueSpartan-SemiBold.woff) format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'league_spartan_regular';
+  src: url(../fonts/LeagueSpartan/static/woff2/LeagueSpartan-Regular.woff2) format('woff2'),
+       url(../fonts/LeagueSpartan/static/woff/LeagueSpartan-Regular.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_bold';
+  src: url(../fonts/Roboto/static/woff2/Roboto-Bold.woff2) format('woff2'),
+       url(../fonts/Roboto/static/woff/Roboto-Bold.woff) format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto';
+  src: url(../fonts/Roboto/static/woff2/Roboto-Regular.woff2) format('woff2'),
+       url(../fonts/Roboto/static/woff/Roboto-Regular.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_italic';
+  src: url(../fonts/Roboto/static/woff2/Roboto-Italic.woff2) format('woff2'),
+       url(../fonts/Roboto/static/woff/Roboto-Italic.woff) format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'roboto_thin';
+  src: url(../fonts/Roboto/static/woff2/Roboto-Thin.woff2) format('woff2'),
+       url(../fonts/Roboto/static/woff/Roboto-Thin.woff) format('woff');
+  font-weight: thin;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-size: calc(1rem + 0.25vw);
+}
+
+h1{
+  font-size: 1.5em;
+}
+
+h2{
+  font-size: 1.25em
+}
+
+h3{
+  font-size: 1em;
+}
+
+p{
+  font-size: 0.75em;
 }
 
 code {

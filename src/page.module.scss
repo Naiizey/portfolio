@@ -14,6 +14,12 @@
   --highlight-color: #8d23ad;
 }
 
+a{
+  font-family: 'roboto_italic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--font-color);
+  transition: color var(--transi-time) var(--transi-function);
+}
+
 .removeScrollBar{
   &::-webkit-scrollbar {
     display: none;
@@ -27,6 +33,7 @@
 
   --transi-function: ease-out;
   --transi-time: 1s;
+  --colorMixed: color-mix(in srgb, var(--bg-color) 95%, var(--font-color) 5%);
 
   color: var(--font-color);
 }
@@ -62,7 +69,9 @@
   -ms-user-select: none;
   user-select: none;
 
-  transition: background-color var(--transi-time) var(--transi-function), color var(--transi-time) var(--transi-function);
+  transition: background-color var(--transi-time) var(--transi-function),
+    color var(--transi-time) var(--transi-function),
+    box-shadow var(--transi-time) var(--transi-function);
 }
 
 .page{
@@ -84,6 +93,8 @@
 
   top: 37.5vh;
   left: 1vw;
+
+  z-index: 100;
 
   li{
     list-style: none;

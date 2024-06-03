@@ -1,9 +1,26 @@
 import React, { MutableRefObject, useRef, useState, useEffect, useCallback } from 'react';
 
 import Logo from './logo.tsx';
+import LogoG from './logoG.tsx';
+import LogoF from './logoF.tsx';
+
+import AHrefed from './aHrefed.component.tsx';
+
+import portrait from './images/Accueil/portrait.png';
+
 import pagesStyles from './page.module.scss';
 import headerStyles from './header.module.scss';
+import accueilStyles from './accueil.module.scss';
+import projets_experiencesStyles from './projets_experiences.module.scss';
+import technologiesStyles from './technologies.module.scss'
 
+import projets from './projets.json';
+import experiences from './experiences.json';
+import technologies from './technologies.json';
+import skills from './skills.json';
+
+import Carousel from './carousel.component.tsx';
+import SmallCardsList from './smallCardsList.component.tsx';
 
 function App() {
 
@@ -26,73 +43,90 @@ function App() {
   //--------------------Refs--------------------
 
   const clickAcc = useRef<HTMLDivElement | null>(null);
-  const clickPres = useRef<HTMLDivElement | null>(null);
-  const clickExp = useRef<HTMLDivElement | null>(null);
   const clickProj = useRef<HTMLDivElement | null>(null);
+  const clickExp = useRef<HTMLDivElement | null>(null);
   const clickTech = useRef<HTMLDivElement | null>(null);
+  const clickSkill = useRef<HTMLDivElement | null>(null);
+  const clickHobs = useRef<HTMLDivElement | null>(null);
+  const clickCont = useRef<HTMLDivElement | null>(null);
 
-  const refs = [clickAcc, clickPres, clickExp, clickProj, clickTech];
+  const refs = [clickAcc, clickProj, clickExp, clickTech, clickSkill, clickHobs, clickCont];
 
   //--------------------Scroll Points--------------------
 
-  let scrollPoints = NodeList.prototype as any;
-  let navCatergories = NodeList.prototype as any;
+  let scrollPoints = useRef(NodeList.prototype as any);
+  let navCategories = useRef(NodeList.prototype as any);
 
-  setTimeout(() => {
-    scrollPoints = document.querySelectorAll('*[class^="page_scrollPoints"] > li > button');
-    navCatergories = document.querySelectorAll('header > nav > ul > li');
-  });
+  let currPage: number, oldPage: number;
 
-  let currPage, oldPage;
+  useEffect(() => {
+    scrollPoints.current = document.querySelectorAll('*[class^="page_scrollPoints"] > li > button');
+    navCategories.current = document.querySelectorAll('header > nav > ul > li');
 
+    console.log(navCategories);
 
-  setTimeout(() => {['load', 'scroll'].forEach(function(e) {
     currPage = Math.round((window.scrollY) / (window.innerHeight - 1));
 
     oldPage = currPage;
 
-    window.addEventListener(e, () => {
+    ['load', 'scroll'].forEach(function(e) {
       currPage = Math.round((window.scrollY) / (window.innerHeight - 1));
 
-      if(currPage > oldPage){
-        scrollPoints[currPage].classList.add(pagesStyles.active);
-
-        navCatergories[currPage].classList.add(headerStyles.active);
-
-        if(scrollPoints[currPage - 1] !== undefined){
-          scrollPoints[currPage - 1].classList.remove(pagesStyles.active);
-
-          navCatergories[currPage - 1].classList.remove(headerStyles.active);
-        }
-      }
-      else if(currPage < oldPage){
-        scrollPoints[currPage].classList.add(pagesStyles.active);
-        scrollPoints[currPage + 1].classList.remove(pagesStyles.active);
-
-        navCatergories[currPage].classList.add(headerStyles.active);
-        navCatergories[currPage + 1].classList.remove(headerStyles.active);
-      }
-      else{
-        scrollPoints[currPage].classList.add(pagesStyles.active);
-
-        navCatergories[currPage].classList.add(headerStyles.active);
-      }
-
       oldPage = currPage;
+
+      window.addEventListener(e, () => {
+        currPage = Math.round((window.scrollY) / (window.innerHeight - 1));
+
+        if(currPage > oldPage){
+          scrollPoints.current[currPage].classList.add(pagesStyles.active);
+
+          navCategories.current[currPage].classList.add(headerStyles.active);
+
+          if(scrollPoints.current[currPage - 1] !== undefined){
+            scrollPoints.current[currPage - 1].classList.remove(pagesStyles.active);
+
+            navCategories.current[currPage - 1].classList.remove(headerStyles.active);
+          }
+        }
+        else if(currPage < oldPage){
+          scrollPoints.current[currPage].classList.add(pagesStyles.active);
+          scrollPoints.current[currPage + 1].classList.remove(pagesStyles.active);
+
+          navCategories.current[currPage].classList.add(headerStyles.active);
+          navCategories.current[currPage + 1].classList.remove(headerStyles.active);
+        }
+        else{
+          scrollPoints.current[currPage].classList.add(pagesStyles.active);
+
+          navCategories.current[currPage].classList.add(headerStyles.active);
+        }
+
+        oldPage = currPage;
+      });
     });
-  })});
+  }, [])
+
+  //----------------Handle resize--------------------
+
+  window.addEventListener('resize', () => {
+    if(refs[currPage]){
+      scrollTo(refs[currPage]);
+    }
+  })
 
   //----------------Scroll Arrows--------------------
 
   window.addEventListener('keydown', (event) => {
     if(event.key === "ArrowDown"){
+      event.preventDefault();
       if(oldPage < 4){
-        refs[oldPage + 1].current?.scrollIntoView({ behavior: 'smooth'});
+        scrollTo(refs[oldPage + 1]);
       }
     }
     else if(event.key === "ArrowUp"){
+      event.preventDefault();
       if(oldPage > 0){
-        refs[oldPage - 1].current?.scrollIntoView({ behavior: 'smooth'});
+        scrollTo(refs[oldPage - 1]);
       }
     }
   });
@@ -102,12 +136,12 @@ function App() {
   window.addEventListener('wheel', (event) => {
     if(event.deltaY > 0){
       if(oldPage < 4){
-        refs[oldPage + 1].current?.scrollIntoView({ behavior: 'smooth'});
+        scrollTo(refs[oldPage + 1]);
       }
     }
     else if(event.deltaY < 0){
       if(oldPage > 0){
-        refs[oldPage - 1].current?.scrollIntoView({ behavior: 'smooth'});
+        scrollTo(refs[oldPage - 1]);
       }
     }
   })
@@ -130,26 +164,49 @@ function App() {
   }, [toggleSwitch]);
 
   //---------------------Schools-----------------------
-  const items = [
-    {
-      id:1,
-      title: 'Lycée Saint-Pierre Saint-Brieuc',
-      diploma : 'Baccalauréat Général',
-      specialties: ['Mathématiques', 'NSI ( numérique et sciences informatiques)', 'Physique-Chimie'],
-      mentions: ['Mention européenne'],
-      certificats: ['Cambridge English Certificate B2-C1']
-    },
-    {
-      id:2,
-      title: 'IUT de Lannion',
-      diploma: 'BUT Informatique parcours A',
-      specialties: ['Conception, développement et gestion de logiciels', 'Développement et conception de sites web', 'Gestion de bases de données']
-    }
-  ]
+
+  const handleBlackandWhiteImages = (array) => {
+    array.map(item => {
+      if(isOn){
+        item.images = [
+          `${item.name}W`
+        ];
+      }
+      else if(!isOn){
+        item.images = [
+          `${item.name}B`
+        ];
+      }
+
+      return array;
+    });
+  };
+
+  handleBlackandWhiteImages(experiences);
+
+  useEffect(() => {
+    handleBlackandWhiteImages(experiences);
+  }, [isOn]);
+
+  //-------------------Technologies--------------------
+  handleBlackandWhiteImages(technologies);
+
+  useEffect(() => {
+    handleBlackandWhiteImages(technologies);
+  }, [isOn]);
+
+  //---------------------Skills-----------------------
+  handleBlackandWhiteImages(skills);
+
+  useEffect(() => {
+    handleBlackandWhiteImages(skills);
+  }, [isOn]);
+
+  //---------------------ScrollTo----------------------
 
   const scrollTo = (ref: MutableRefObject<HTMLDivElement | null>) => {
-    if (ref.current !== null) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
+    if (ref?.current) {
+      ref?.current.scrollIntoView({block: 'end', behavior: 'smooth'});
     }
   }
 
@@ -167,10 +224,10 @@ function App() {
           className={headerStyles.menu}>
           <ul>
             <li onClick={() => scrollTo(clickAcc)}>Accueil</li>
-            <li onClick={() => scrollTo(clickPres)}>Présentation</li>
-            <li onClick={() => scrollTo(clickExp)}>Experiences</li>
             <li onClick={() => scrollTo(clickProj)}>Projets</li>
+            <li onClick={() => scrollTo(clickExp)}>Experiences</li>
             <li onClick={() => scrollTo(clickTech)}>Technologies</li>
+            <li onClick={() => scrollTo(clickSkill)}>Skills</li>
           </ul>
         </nav>
         <button
@@ -185,30 +242,75 @@ function App() {
       </header>
       <main className={`${pagesStyles.main} ${pagesStyles.main}`}>
         <ul className={`${pagesStyles.scrollPoints}`}>
-          <li>
-            <button onClick={() => scrollTo(clickAcc)}></button>
-          </li>
-          <li>
-            <button onClick={() => scrollTo(clickPres)}></button>
-          </li>
-          <li>
-            <button onClick={() => scrollTo(clickExp)}></button>
-          </li>
-          <li>
-            <button onClick={() => scrollTo(clickProj)}></button>
-          </li>
-          <li>
-            <button onClick={() => scrollTo(clickTech)}></button>
-          </li>
+          {
+            refs.map((ref, index) => (
+              <li key={index}>
+                <button onClick={() => scrollTo(ref)}></button>
+              </li>
+            ))
+          }
         </ul>
-        <section ref={clickAcc} className={`${pagesStyles.accueil} ${pagesStyles.page}`} id="accueil">
-          <div className="leftSide"></div>
-          {/* <div className="rightSide"><Logo className={pagesStyles.accueilLogo}/></div> */}
+        <section ref={clickAcc} className={`${accueilStyles.accueil} ${pagesStyles.page}`} id="accueil">
+          <div className={accueilStyles.leftSide}>
+            <article>
+              <h2>Bonjour, moi c'est Florian Guillou !</h2>
+              <h3>Alternant chez RnPVision en développement FullStack & étudiant à l'IUT de Lannion</h3>
+              <p>
+                Mon alternance est en lien avec le domaine de la géomatique et plus précisemment du SIG,
+                système d'informations géographiques. <AHrefed href="http://rnpvision.com/" text="RnPVision"/> est
+                une entreprise qui développe en SAAS un SIG web basé sur <AHrefed href="https://www.veremes.com/produits/vmap" text="VMap2"/>.
+              </p>
+              <p>
+                Je suis également en BUT 3ème année à l'<AHrefed href="https://iut-lannion.univ-rennes.fr/" text="IUT
+                de Lannion"/>, jusque fin août 2024 où j'étudie la réalisation d'application, de la conception à la validation en
+                passant évidemment par le développement.
+              </p>
+              <p>
+                En plus de l'informatique en général, j'apprécie la photographie que je peux désormais proprement matérialiser après l'acquisition
+                d'un superbe <AHrefed href="https://fujifilm-x.com/fr-fr/products/cameras/x-t5/" text="Fujifilm X-T5"/> ! Quelques photos
+                sont d'ailleurs disponible ici : <AHrefed href="https://www.floriangll.fr/photos" text="floriangll.fr/photos"/>
+              </p>
+              <p>
+                J'apprécie également l'automobile avec un attrait notamment pour les véhicules des années 70/80/90
+              </p>
+            </article>
+          </div>
+          <div className={accueilStyles.rightSide}>
+            <div className={accueilStyles.logoTwoLevels}>
+              <LogoG className={accueilStyles.logoG}/>
+              <img src={portrait} alt="portrait"/>
+              <LogoF className={accueilStyles.logoF}/>
+            </div>
+          </div>
         </section>
-        <section ref={clickPres} className={`${pagesStyles.presentation} ${pagesStyles.page}`} id="presentation"></section>
-        <section ref={clickExp} className={`${pagesStyles.experiences} ${pagesStyles.page}`} id="experiences"></section>
-        <section ref={clickProj} className={`${pagesStyles.projects} ${pagesStyles.page}`} id="projets"></section>
-        <section ref={clickTech} className={`${pagesStyles.technologies} ${pagesStyles.page}`} id="technologies"></section>
+        <section
+          ref={clickProj}
+          className={`${projets_experiencesStyles.projets} ${pagesStyles.page}`}
+          id="projets"
+        >
+          <Carousel items={projets} imagesFolder="./images/Projets/" pageIndex={refs.indexOf(clickProj)}/>
+        </section>
+        <section
+          ref={clickExp}
+          className={`${projets_experiencesStyles.experiences} ${pagesStyles.page}`}
+          id="experiences"
+        >
+          <Carousel items={experiences} imagesFolder="./images/Experiences/" pageIndex={refs.indexOf(clickExp)}/>
+        </section>
+        <section
+          ref={clickTech}
+          className={`${technologiesStyles.technologies} ${pagesStyles.page}`}
+          id="technologies"
+        >
+          <SmallCardsList items={technologies} imagesFolder="./images/Technologies/"/>
+        </section>
+        <section
+          ref={clickSkill}
+          className={`${pagesStyles.page}`}
+          id="skills"
+          >
+          <SmallCardsList items={skills} imagesFolder="./images/Skills/"/>
+        </section>
       </main>
     </div>
   );

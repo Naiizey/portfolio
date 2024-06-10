@@ -55,6 +55,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   font-size: calc(1rem + 0.25vw);
+
+  overflow-y: hidden;
 }
 
 h1{

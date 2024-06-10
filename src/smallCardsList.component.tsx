@@ -4,7 +4,7 @@ import smallCardListStyles from './smallCardsList.module.scss'
 
 import AHrefed from './aHrefed.component.tsx';
 
-const SmallCardsList = ({items, imagesFolder}) => {
+const SmallCardsList = ({items, imagesFolder, setScrollCarousel}) => {
     return(
         <div className={smallCardListStyles.list}>
             {
@@ -20,14 +20,14 @@ const SmallCardsList = ({items, imagesFolder}) => {
                                             item.url.map(url => {
                                                 url = url.split("/");
                                                 return (
-                                                <p
+                                                <button
                                                     key={url[1]}
                                                     onClick={() => {
-
+                                                        setScrollCarousel(url);
                                                     }}
                                                 >
                                                     {url[1]}
-                                                </p>
+                                                </button>
                                             )})
                                         }
                                         { !Array.isArray(item.url) &&
@@ -35,7 +35,7 @@ const SmallCardsList = ({items, imagesFolder}) => {
                                         }
                                     </p>
                                 }
-                                <img src={require(imagesFolder + item.images + ".png")} alt={item.name}></img>
+                                <img src={require(imagesFolder + item.images + ".webp")} alt={item.name}></img>
                             </article>
                         </div>
                     )

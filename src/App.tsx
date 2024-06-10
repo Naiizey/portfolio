@@ -6,18 +6,18 @@ import LogoF from './logoF.tsx';
 
 import AHrefed from './aHrefed.component.tsx';
 
-import portrait from './images/Accueil/portrait.png';
+import portrait from './images/Accueil/portrait.webp';
 
 import pagesStyles from './page.module.scss';
 import headerStyles from './header.module.scss';
 import accueilStyles from './accueil.module.scss';
 import projets_experiencesStyles from './projets_experiences.module.scss';
-import technologiesStyles from './technologies.module.scss'
 
 import projets from './projets.json';
 import experiences from './experiences.json';
 import technologies from './technologies.json';
 import skills from './skills.json';
+import passions from './passions.json';
 
 import Carousel from './carousel.component.tsx';
 import SmallCardsList from './smallCardsList.component.tsx';
@@ -48,9 +48,9 @@ function App() {
   const clickTech = useRef<HTMLDivElement | null>(null);
   const clickSkill = useRef<HTMLDivElement | null>(null);
   const clickHobs = useRef<HTMLDivElement | null>(null);
-  const clickCont = useRef<HTMLDivElement | null>(null);
+  // const clickCont = useRef<HTMLDivElement | null>(null);
 
-  const refs = [clickAcc, clickProj, clickExp, clickTech, clickSkill, clickHobs, clickCont];
+  const refs = [clickAcc, clickProj, clickExp, clickTech, clickSkill, clickHobs/*, clickCont*/];
 
   //--------------------Scroll Points--------------------
 
@@ -62,8 +62,6 @@ function App() {
   useEffect(() => {
     scrollPoints.current = document.querySelectorAll('*[class^="page_scrollPoints"] > li > button');
     navCategories.current = document.querySelectorAll('header > nav > ul > li');
-
-    console.log(navCategories);
 
     currPage = Math.round((window.scrollY) / (window.innerHeight - 1));
 
@@ -116,10 +114,10 @@ function App() {
 
   //----------------Scroll Arrows--------------------
 
-  window.addEventListener('keydown', (event) => {
+  const uOrDArrowKeyDown = (event) => {
     if(event.key === "ArrowDown"){
       event.preventDefault();
-      if(oldPage < 4){
+      if(oldPage < (refs.length - 1)){
         scrollTo(refs[oldPage + 1]);
       }
     }
@@ -129,13 +127,15 @@ function App() {
         scrollTo(refs[oldPage - 1]);
       }
     }
-  });
+  }
+
+  window.addEventListener('keydown', uOrDArrowKeyDown);
 
   //------------------Scroll Mouse--------------------
 
-  window.addEventListener('wheel', (event) => {
+  const wheel = (event) => {
     if(event.deltaY > 0){
-      if(oldPage < 4){
+      if(oldPage < refs.length - 1){
         scrollTo(refs[oldPage + 1]);
       }
     }
@@ -144,14 +144,16 @@ function App() {
         scrollTo(refs[oldPage - 1]);
       }
     }
-  })
+  }
+
+  window.addEventListener('wheel', wheel)
 
   //--------------Toggle DarkMode Key-----------------
 
 
   useEffect(() => {
     const lKeyDown = (event) => {
-      if(event.key === "l"){
+      if(event.key === "t"){
         toggleSwitch();
       }
     }
@@ -189,17 +191,11 @@ function App() {
   }, [isOn]);
 
   //-------------------Technologies--------------------
+
   handleBlackandWhiteImages(technologies);
 
   useEffect(() => {
     handleBlackandWhiteImages(technologies);
-  }, [isOn]);
-
-  //---------------------Skills-----------------------
-  handleBlackandWhiteImages(skills);
-
-  useEffect(() => {
-    handleBlackandWhiteImages(skills);
   }, [isOn]);
 
   //---------------------ScrollTo----------------------
@@ -214,6 +210,16 @@ function App() {
 
   setTimeout(() => {document.querySelector("html")?.classList.add(pagesStyles.removeScrollBar);});
 
+  //-----------------ScrollCarousel------------------
+
+  const [scrollCarousel, setScrollCarousel] = useState([]);
+
+  useEffect(() => {
+    const ref = refs.filter(filteredRef => filteredRef.current?.id.includes(scrollCarousel[0]))[0];
+
+    scrollTo(ref)
+  }, [scrollCarousel, refs]);
+
   //--------------------Page-------------------------
 
   return (
@@ -227,7 +233,8 @@ function App() {
             <li onClick={() => scrollTo(clickProj)}>Projets</li>
             <li onClick={() => scrollTo(clickExp)}>Experiences</li>
             <li onClick={() => scrollTo(clickTech)}>Technologies</li>
-            <li onClick={() => scrollTo(clickSkill)}>Skills</li>
+            <li onClick={() => scrollTo(clickSkill)}>Compétences</li>
+            <li onClick={() => scrollTo(clickHobs)}>Passions</li>
           </ul>
         </nav>
         <button
@@ -268,7 +275,7 @@ function App() {
               <p>
                 En plus de l'informatique en général, j'apprécie la photographie que je peux désormais proprement matérialiser après l'acquisition
                 d'un superbe <AHrefed href="https://fujifilm-x.com/fr-fr/products/cameras/x-t5/" text="Fujifilm X-T5"/> ! Quelques photos
-                sont d'ailleurs disponible ici : <AHrefed href="https://www.floriangll.fr/photos" text="floriangll.fr/photos"/>
+                sont d'ailleurs disponible ici : <AHrefed href="https://photos.floriangll.fr" text="photos.floriangll.fr"/>
               </p>
               <p>
                 J'apprécie également l'automobile avec un attrait notamment pour les véhicules des années 70/80/90
@@ -288,28 +295,35 @@ function App() {
           className={`${projets_experiencesStyles.projets} ${pagesStyles.page}`}
           id="projets"
         >
-          <Carousel items={projets} imagesFolder="./images/Projets/" pageIndex={refs.indexOf(clickProj)}/>
+          <Carousel name={"projets"} items={projets} imagesFolder="./images/Projets/" pageIndex={refs.indexOf(clickProj)} scrollCarousel={scrollCarousel} setScrollCarousel={setScrollCarousel} uOrDArrowKeyDown={uOrDArrowKeyDown} wheel={wheel}/>
         </section>
         <section
           ref={clickExp}
           className={`${projets_experiencesStyles.experiences} ${pagesStyles.page}`}
           id="experiences"
         >
-          <Carousel items={experiences} imagesFolder="./images/Experiences/" pageIndex={refs.indexOf(clickExp)}/>
+          <Carousel name={"experiences"} items={experiences} imagesFolder="./images/Experiences/" pageIndex={refs.indexOf(clickExp)} scrollCarousel={scrollCarousel} setScrollCarousel={setScrollCarousel} uOrDArrowKeyDown={uOrDArrowKeyDown} wheel={wheel}/>
         </section>
         <section
           ref={clickTech}
-          className={`${technologiesStyles.technologies} ${pagesStyles.page}`}
+          className={`${pagesStyles['center-items']} ${pagesStyles.page}`}
           id="technologies"
         >
-          <SmallCardsList items={technologies} imagesFolder="./images/Technologies/"/>
+          <SmallCardsList items={technologies} imagesFolder="./images/Technologies/" setScrollCarousel={setScrollCarousel}/>
         </section>
         <section
           ref={clickSkill}
-          className={`${pagesStyles.page}`}
+          className={`${pagesStyles['center-items']} ${pagesStyles.page}`}
           id="skills"
           >
-          <SmallCardsList items={skills} imagesFolder="./images/Skills/"/>
+          <SmallCardsList items={skills} imagesFolder="./images/Skills/" setScrollCarousel={setScrollCarousel}/>
+        </section>
+        <section
+          ref={clickHobs}
+          className={`${pagesStyles['center-items']} ${pagesStyles.page}`}
+          id="passions"
+        >
+          <Carousel name={"passions"} items={passions} imagesFolder={"./images/Passions/"} pageIndex={refs.indexOf(clickHobs)} scrollCarousel={scrollCarousel} setScrollCarousel={setScrollCarousel} uOrDArrowKeyDown={uOrDArrowKeyDown} wheel={wheel}/>
         </section>
       </main>
     </div>

@@ -50,8 +50,16 @@
             & > p:last-of-type{
                 display: flex;
                 column-gap: 0.5vw;
-                text-decoration: underline;
+
+                text-decoration: underline var(--highlight-color);
                 cursor: pointer;
+
+                button{
+                    all: unset;
+
+                    color: var(--highlight-color);
+                    font-size: 0.75em;
+                }
             }
 
             img{

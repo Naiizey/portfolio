@@ -3,7 +3,7 @@
         "name": "realiser",
         "title": "Réaliser",
         "description": "Implémenter, élaborer des applications simples, appliquer les principes d'accessibilité et d'ergonomie, faire évoluer une application existante",
-        "images": "",
+        "images": "realiser",
         "url": [
             "projets/alizon",
             "projets/loppu"
@@ -13,7 +13,7 @@
         "name": "optimiser",
         "title": "Optimiser",
         "description": "Comprendre les enjeux et moyens de sécurisation des données et du code, profiler, analyser le comportement d'un code existant",
-        "images": "",
+        "images": "optimiser",
         "url": [
             "projets/loppu",
             "projets/pokedex"
@@ -23,9 +23,43 @@
         "name": "administrer",
         "title": "Administrer",
         "description": "Configurer un poste de travail dans un réseau d'entreprise, concevoir et développer des applications communicantes",
-        "images": "",
+        "images": "administrer",
         "url": [
             "experiences/rnpvision",
+            "projets/loppu"
+        ]
+    },
+    {
+        "name": "gerer",
+        "title": "Gérer",
+        "description": "Mettre à jour et interroger des bases de données, visualiser des données, optimiser les modèles de données, manipuler des données hétérogènes",
+        "images": "gerer",
+        "url": [
+            "experiences/rnpvision",
+            "projets/alizon",
+            "projets/loppu",
+            "projets/dsBot"
+        ]
+    },
+    {
+        "name": "conduire",
+        "title": "Conduire",
+        "description": "Appréhender les besoins du client, formaliser les besoins du client, identifier les critères de faisabilité, définir et mettre en oeuvre une démarche de suivi",
+        "images": "conduire",
+        "url": [
+            "experiences/rnpvision",
+            "projets/alizon",
+            "projets/loppu"
+        ]
+    },
+    {
+        "name": "collaborer",
+        "title": "Collaborer",
+        "description": "Appréhender un éco-système numérique, mobiliser ses compétences pour travailler dans un groupe, rendre compte de son activité pro.",
+        "images": "collaborer",
+        "url": [
+            "experiences/rnpvision",
+            "projets/alizon",
             "projets/loppu"
         ]
     }

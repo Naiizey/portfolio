@@ -1,0 +1,41 @@
+[
+    {
+        "name": "photo",
+        "title": "Photographie",
+        "description": "Passionné de photographies depuis longtemps, j'utilisais mon téléphone afin d'effectuer des clichés, j'ai débuté avec un Redmi Note 8 Pro, puis un Poco F5. Depuis le début d'année 2024, j'ai réussi à faire l'acquisition d'un Fujifilm X-T5 avec un objectif XF16-55mm.",
+        "images": [
+            "flower",
+            "moon",
+            "dog",
+            "bee",
+            "sky"
+        ],
+        "url": "https://photos.floriangll.fr"
+    },
+    {
+        "name": "automobile",
+        "title": "Automobile",
+        "description": "L'automobile est un vaste monde que j'adore, je porte un intérêt notamment pour les véhicules des années 70 à 90. Je pense plus tard me plonger dans la mécanique automobile avec l'envie d'avoir un projet de véhicule préparé pour le circuit. J'apprécie notamment beaucoup les véhicules japonais type GT et les véhicules américains type muscle car mais également les petites sportives françaises reines de rally",
+        "images": [
+            "200sx",
+            "r5",
+            "alpine",
+            "rocketBunny",
+            "camaro",
+            "audi",
+            "f1",
+            "touareg",
+            "lancia"
+        ]
+    },
+    {
+        "name": "subMarine",
+        "title": "Monde sous-marin",
+        "description": "Le monde marin et sous-marin m'a toujours fasciné. Je suis fan des orques notamment pour leurs grandes capacités intellectuelles. L'ensemble des découvertes que l'Homme peut encore réaliser sur Terre, dans les océans est impressionant. J'ai pu effectué un stage de plongée que j'ai réussi. Je suis donc diplômé niveau 1 par l'ANMP ( Association nationale des moniteurs de plongée ), ce qui me permet d'effectuer des plongées jusque 20m avec accompagnement d'un instructeur.",
+        "images": [
+            "orca",
+            "plongee",
+            "orcaDraw"
+        ]
+    }
+]

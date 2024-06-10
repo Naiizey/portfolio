@@ -16,7 +16,7 @@
 
 a{
   font-family: 'roboto_italic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--font-color);
+  color: var(--highlight-color);
   transition: color var(--transi-time) var(--transi-function);
 }
 
@@ -130,4 +130,10 @@ a{
       }
     }
   }
+}
+
+.center-items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
